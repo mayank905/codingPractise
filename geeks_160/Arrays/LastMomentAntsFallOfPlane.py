@@ -30,13 +30,34 @@ All values of left and right are unique, and each value can appear only in one o
 class Solution:
     def getLastMoment(self, n, left, right):
         #code here
-        if not left:
-            left.append(0)
-        if not right:
-            right.append(n)
-        return max(n-left[-1],right[0])
+        dis=0
+        max1=max(left)
+        min1=min(right)
+        if left==[]:
+            dis=n-min1
+            return dis
+        if right==[]:
+            dis=max1
+            return dis
+        
+        if max1>(n-min1):
+            dis=max1
+        else:
+            dis=n-min1
+        return dis
+    # OR
+        # max1=max(left) if left else 0
+        # min1=min(right) if right else 0
+        # if not left:
+        #     return n-min1
+        # if not right:
+        #     return max1
+        # if max1>=(n-min1):
+        #     return max1
+        # else:
+        #     return n-min1 
 sol=Solution()
-n = 4
-left = [2]
-right = [0, 1, 3]
+n = 8
+left = [0,8,7]
+right = [3,1,2]
 print(sol.getLastMoment(n,left,right))
